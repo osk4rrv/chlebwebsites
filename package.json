@@ -2,7 +2,7 @@
   "name": "asterza",
   "private": true,
   "version": "1.0.0",
-  "description": "Asterza — VPS, game server and Discord bot hosting. Marketing site.",
+  "description": "Asterza \u2014 VPS, game server and Discord bot hosting. Marketing site.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,8 @@
     "postbuild": "cp dist/index.html dist/404.html && node tools/routes.mjs && touch dist/.nojekyll",
     "lint": "oxlint",
     "preview": "vite preview",
-    "shots": "node tools/shots.mjs"
+    "shots": "node tools/shots.mjs",
+    "verify": "node tools/live.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",
