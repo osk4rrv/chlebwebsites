@@ -1,0 +1,226 @@
+/* Shared page-level composition helpers. */
+
+/* --- Control panel showcase heading ------------------------------------ */
+.pnl-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: var(--s-10);
+  align-items: end;
+  margin-bottom: var(--s-8);
+}
+.pnl-title {
+  margin-top: var(--s-4);
+  max-width: 30ch;
+}
+.pnl-note {
+  font-size: var(--fs-sm);
+  color: var(--c-text-2);
+  line-height: var(--lh-loose);
+  border-left: 1px solid var(--c-line-2);
+  padding-left: var(--s-6);
+  max-width: 44ch;
+}
+.pnl-foot {
+  margin-top: var(--s-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-6);
+  flex-wrap: wrap;
+}
+.pnl-foot .mono {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-4);
+}
+
+@media (max-width: 1023px) {
+  .pnl-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+  .pnl-note {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--c-line);
+    padding-top: var(--s-5);
+  }
+}
+
+/* --- Two-column argument block ----------------------------------------- */
+.arg {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--s-10);
+  align-items: start;
+}
+.arg__title {
+  max-width: 24ch;
+}
+.arg__body {
+  margin-top: var(--s-5);
+  color: var(--c-text-2);
+  line-height: var(--lh-loose);
+  max-width: 52ch;
+}
+.arg__points > div {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: var(--s-5);
+  padding: 14px 0;
+  border-top: 1px solid var(--c-line);
+}
+.arg__points > div:last-child {
+  border-bottom: 1px solid var(--c-line);
+}
+.arg__points dt {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--c-accent);
+  letter-spacing: 0.01em;
+}
+.arg__points dd {
+  font-size: var(--fs-sm);
+  color: var(--c-text-2);
+  line-height: 1.55;
+}
+
+@media (max-width: 1023px) {
+  .arg {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-8);
+  }
+}
+@media (max-width: 599px) {
+  .arg__points > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+}
+
+/* --- Catalogue list (images / games / runtimes) ------------------------- */
+.cat {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: var(--s-9);
+  align-items: start;
+}
+.cat__note {
+  margin-top: var(--s-4);
+  font-size: var(--fs-xs);
+  color: var(--c-text-3);
+  line-height: 1.6;
+}
+.cat__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--s-9);
+}
+.cat__list li {
+  padding: 11px 0;
+  border-top: 1px solid var(--c-line);
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-2);
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+}
+.cat__list li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: var(--c-line-3);
+  flex: none;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1023px) {
+  .cat {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+}
+@media (max-width: 599px) {
+  .cat__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* --- Flat detail table -------------------------------------------------- */
+.detail__rows > div {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: var(--s-6);
+  padding: 14px 0;
+  border-top: 1px solid var(--c-line);
+  align-items: baseline;
+}
+.detail__rows > div:last-child {
+  border-bottom: 1px solid var(--c-line);
+}
+.detail__rows dt {
+  font-size: var(--fs-sm);
+  color: var(--c-text);
+}
+.detail__rows dd {
+  font-size: var(--fs-sm);
+  color: var(--c-text-2);
+  line-height: 1.6;
+}
+@media (max-width: 599px) {
+  .detail__rows > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 5px;
+  }
+}
+
+/* --- Simple prose wrapper ---------------------------------------------- */
+.prose p {
+  color: var(--c-text-2);
+  line-height: var(--lh-loose);
+  max-width: 70ch;
+}
+.prose p + p {
+  margin-top: var(--s-5);
+}
+
+
+/* --- Pricing extras grid ------------------------------------------------ */
+.pricegrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--s-10);
+  align-items: start;
+}
+.pricegrid__t {
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--c-line-2);
+  margin-bottom: var(--s-2);
+}
+.pricegrid__list li {
+  position: relative;
+  padding: 11px 0 11px 22px;
+  border-top: 1px solid var(--c-line);
+  font-size: var(--fs-sm);
+  color: var(--c-text-2);
+  line-height: 1.5;
+}
+.pricegrid__list li:first-child {
+  border-top: none;
+}
+.pricegrid__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 9px;
+  height: 1px;
+  background: var(--c-accent);
+}
+
+@media (max-width: 1023px) {
+  .pricegrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-8);
+  }
+}

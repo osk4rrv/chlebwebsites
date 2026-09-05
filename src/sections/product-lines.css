@@ -1,0 +1,322 @@
+.prods {
+  margin-top: calc(var(--s-4) * -1);
+}
+
+.prod {
+  padding-block: var(--s-10);
+  border-top: 1px solid var(--c-line);
+}
+.prod:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.prod:last-child {
+  padding-bottom: 0;
+}
+
+/* --- Row head: index, name, hardware line ----------------------------- */
+.prod__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-5);
+  margin-bottom: var(--s-7);
+}
+.prod__idx {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-accent);
+  padding-top: 2px;
+  flex: none;
+}
+.prod__name {
+  flex: none;
+}
+.prod__hw {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-4);
+  margin-left: auto;
+  text-align: right;
+  padding-bottom: 2px;
+}
+
+/* --- Three unequal zones: copy, figure, spec -------------------------- */
+.prod__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.94fr) 180px;
+  gap: var(--s-9);
+  align-items: start;
+}
+
+/* The middle row mirrors the composition: figure first, copy second. Orders
+   are stated explicitly so the spec column stays last. */
+.prod--flip .prod__grid {
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.02fr) 180px;
+}
+.prod--flip .prod__fig {
+  order: 1;
+}
+.prod--flip .prod__copy {
+  order: 2;
+}
+.prod--flip .prod__spec {
+  order: 3;
+}
+
+.prod__body {
+  color: var(--c-text-2);
+  line-height: var(--lh-loose);
+  max-width: 48ch;
+}
+
+.prod__bullets {
+  margin-top: var(--s-6);
+}
+.prod__bullets li {
+  position: relative;
+  padding: 9px 0 9px 22px;
+  border-top: 1px solid var(--c-line);
+  font-size: var(--fs-xs);
+  color: var(--c-text-2);
+  line-height: 1.5;
+}
+.prod__bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 17px;
+  width: 9px;
+  height: 1px;
+  background: var(--c-line-3);
+}
+
+.prod__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--s-6);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--c-text);
+  transition: color var(--t-fast) var(--e-out);
+}
+.prod__link svg {
+  color: var(--c-accent);
+  transition: transform var(--t-med) var(--e-out);
+}
+.prod__link:hover {
+  color: var(--c-accent);
+}
+.prod__link:hover svg {
+  transform: translateX(4px);
+}
+
+/* --- Spec column ------------------------------------------------------ */
+.prod__spec {
+  border-left: 1px solid var(--c-line);
+  padding-left: var(--s-6);
+}
+.prod__price {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-bottom: var(--s-5);
+  border-bottom: 1px solid var(--c-line);
+}
+.prod__amount {
+  font-size: 1.6rem;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--c-text);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.prod__per {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-3);
+  letter-spacing: 0;
+}
+.prod__sku {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-4);
+}
+.prod__kv {
+  display: grid;
+  gap: var(--s-4);
+  padding-top: var(--s-5);
+}
+.prod__kv dd {
+  margin-top: 4px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-2);
+  line-height: 1.4;
+}
+
+/* --- Figures ---------------------------------------------------------- */
+.fig {
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-1);
+  background: var(--c-bg-2);
+  overflow: hidden;
+}
+.fig__cap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--c-line);
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-3);
+  background: var(--c-surface);
+}
+.fig__cap svg {
+  color: var(--c-text-4);
+}
+.fig__table {
+  width: 100%;
+}
+.fig__table td {
+  padding: 9px 12px;
+  font-size: var(--fs-mono-sm);
+  border-top: 1px solid var(--c-line);
+  white-space: nowrap;
+}
+.fig__table tr:first-child td {
+  border-top: none;
+}
+.fig__host {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--c-text);
+}
+.fig__mid {
+  color: var(--c-text-3);
+}
+.fig__num {
+  text-align: right;
+  color: var(--c-text-2);
+  font-variant-numeric: tabular-nums;
+}
+.fig__meter {
+  width: 74px;
+}
+.fig__foot {
+  padding: 9px 12px;
+  border-top: 1px solid var(--c-line);
+  font-size: 0.6875rem;
+  color: var(--c-text-4);
+  background: var(--c-surface);
+}
+
+/* game figure */
+.fig__tick {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--s-6);
+  align-items: center;
+  padding: 16px 12px 14px;
+}
+.fig__tickval {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.fig__tickval .num {
+  font-size: 1.75rem;
+  letter-spacing: -0.035em;
+  color: var(--c-text);
+  line-height: 1;
+}
+.fig__tickval .mono {
+  font-size: var(--fs-mono-sm);
+}
+.fig__tickspark {
+  height: 40px;
+}
+.fig__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--c-line);
+}
+.fig__stats > div {
+  padding: 11px 12px;
+  border-left: 1px solid var(--c-line);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fig__stats > div:first-child {
+  border-left: none;
+}
+.fig__stats .mono {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text);
+}
+
+/* --- Responsive ------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .prod__grid,
+  .prod--flip .prod__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--s-8);
+  }
+  .prod__spec,
+  .prod--flip .prod__spec {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: 1px solid var(--c-line);
+    padding-left: 0;
+    padding-top: var(--s-6);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--s-8);
+    order: 3;
+  }
+  .prod__price {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .prod__kv {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .prod {
+    padding-block: var(--s-9);
+  }
+  .prod__grid,
+  .prod--flip .prod__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-7);
+  }
+  .prod--flip .prod__copy,
+  .prod--flip .prod__fig {
+    order: initial;
+  }
+  .prod__head {
+    flex-wrap: wrap;
+    gap: var(--s-3);
+  }
+  .prod__hw {
+    margin-left: 0;
+    width: 100%;
+    text-align: left;
+  }
+  .prod__spec,
+  .prod--flip .prod__spec {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+  .prod__kv {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-4);
+  }
+  .fig__table td {
+    padding: 8px 10px;
+  }
+  .fig__meter {
+    display: none;
+  }
+}

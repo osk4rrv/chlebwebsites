@@ -1,0 +1,254 @@
+/* The deploy panel is the one element on the page allowed real depth,
+   because it is a product surface sitting above the page. */
+.dpanel {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line-2);
+  border-radius: var(--r-2);
+  box-shadow: var(--sh-panel);
+  overflow: hidden;
+  font-size: var(--fs-mono);
+}
+
+/* --- Bar --------------------------------------------------------------- */
+.dpanel__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  height: 38px;
+  padding-inline: 13px;
+  border-bottom: 1px solid var(--c-line);
+  background: var(--c-bg-2);
+}
+.dpanel__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-2);
+}
+.dpanel__title svg {
+  color: var(--c-text-4);
+}
+
+.dpanel__regions {
+  margin-left: auto;
+  display: flex;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-1);
+  overflow: hidden;
+}
+.dpanel__region {
+  padding: 3px 9px 4px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-3);
+  border-left: 1px solid var(--c-line);
+  transition: color var(--t-fast) var(--e-out),
+    background-color var(--t-fast) var(--e-out);
+}
+.dpanel__region:first-child {
+  border-left: none;
+}
+.dpanel__region:hover {
+  color: var(--c-text);
+  background: rgba(255, 255, 255, 0.035);
+}
+.dpanel__region.is-on {
+  color: var(--c-on-accent);
+  background: var(--c-accent);
+  font-weight: 500;
+}
+
+/* --- Command ---------------------------------------------------------- */
+.dpanel__cmd {
+  padding: 15px 16px 13px;
+  color: var(--c-text);
+  font-size: var(--fs-mono-sm);
+  line-height: 1.6;
+  word-break: break-word;
+}
+.dpanel__prompt {
+  color: var(--c-accent);
+  margin-right: 5px;
+}
+
+/* --- Steps ------------------------------------------------------------ */
+.dpanel__steps {
+  padding: 0 16px 4px;
+}
+.dstep {
+  display: grid;
+  grid-template-columns: 16px 82px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+  font-size: var(--fs-mono-sm);
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity var(--t-med) var(--e-out),
+    transform var(--t-med) var(--e-out);
+}
+.dstep.is-done,
+.dstep.is-active {
+  opacity: 1;
+  transform: none;
+}
+.dstep.is-wait {
+  opacity: 0.18;
+}
+.dstep__mark {
+  display: grid;
+  place-items: center;
+  color: var(--c-ok);
+}
+.dstep__spin {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--c-line-3);
+  border-top-color: var(--c-accent);
+  border-radius: 50%;
+  animation: dspin 700ms linear infinite;
+}
+@keyframes dspin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dstep__spin {
+    animation: none;
+  }
+}
+.dstep__name {
+  color: var(--c-text);
+}
+.dstep__detail {
+  color: var(--c-text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dstep__t {
+  color: var(--c-text-4);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Result ----------------------------------------------------------- */
+.dpanel__result {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  margin: 10px 16px 0;
+  padding: 11px 12px;
+  border: 1px solid var(--c-line);
+  border-left: 2px solid var(--c-ok);
+  border-radius: var(--r-1);
+  background: var(--c-bg-2);
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity var(--t-slow) var(--e-out),
+    transform var(--t-slow) var(--e-out);
+}
+.dpanel__result.is-on {
+  opacity: 1;
+  transform: none;
+}
+.dpanel__id {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text);
+  font-weight: 500;
+}
+.dpanel__ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-ok);
+}
+.dpanel__total {
+  margin-left: auto;
+  font-size: var(--fs-mono-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --- Instrumentation grid --------------------------------------------- */
+.dpanel__grid {
+  margin-top: var(--s-6);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--c-line);
+}
+.dcell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 14px 15px;
+  border-left: 1px solid var(--c-line);
+  min-width: 0;
+}
+.dcell:first-child {
+  border-left: none;
+}
+.dcell__v {
+  font-size: 1.0625rem;
+  color: var(--c-text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.dcell__n {
+  font-size: 0.6875rem;
+  color: var(--c-text-4);
+}
+.dcell__spark {
+  height: 22px;
+  display: block;
+}
+
+/* --- Foot ------------------------------------------------------------- */
+.dpanel__foot {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: 9px 14px;
+  border-top: 1px solid var(--c-line);
+  background: var(--c-bg-2);
+  font-size: 0.6875rem;
+  color: var(--c-text-2);
+}
+.dpanel__sp {
+  flex: 1;
+}
+
+@media (max-width: 719px) {
+  .dpanel__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .dcell:nth-child(3),
+  .dcell:nth-child(4) {
+    border-top: 1px solid var(--c-line);
+  }
+  .dcell:nth-child(odd) {
+    border-left: none;
+  }
+  .dstep {
+    grid-template-columns: 16px 74px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+  .dpanel__result {
+    flex-wrap: wrap;
+    gap: 8px var(--s-4);
+  }
+  .dpanel__total {
+    margin-left: 0;
+    width: 100%;
+  }
+  .dpanel__foot {
+    flex-wrap: wrap;
+    gap: 4px var(--s-4);
+  }
+  .dpanel__sp {
+    display: none;
+  }
+}

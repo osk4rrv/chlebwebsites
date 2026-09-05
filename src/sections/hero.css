@@ -1,0 +1,114 @@
+.hero {
+  padding-block: clamp(48px, 6.5vw, 96px) clamp(56px, 7vw, 104px);
+  overflow: hidden;
+}
+
+.hero__grid {
+  display: grid;
+  /* Deliberately off-centre: text is the narrower column. */
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: var(--s-11);
+  align-items: start;
+}
+
+.hero__h1 {
+  margin-top: var(--s-7);
+}
+.hero__h1-2 {
+  display: block;
+  color: var(--c-text-3);
+}
+
+.hero__lead {
+  margin-top: var(--s-6);
+  max-width: 46ch;
+}
+
+.hero__cta {
+  margin-top: var(--s-8);
+  display: flex;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+
+.hero__facts {
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--c-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px var(--s-5);
+}
+.hero__facts li {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-5);
+}
+.hero__facts li:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 11px;
+  background: var(--c-line-2);
+}
+
+.hero__right {
+  padding-top: 6px;
+}
+
+.hero__caption {
+  margin-top: var(--s-4);
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-4);
+  max-width: 52ch;
+  line-height: 1.55;
+}
+
+/* On wide screens the panel runs past the container edge so the composition
+   reads as a crop rather than a centred pair of boxes. */
+@media (min-width: 1280px) {
+  .hero__right {
+    margin-right: calc(var(--gutter) * -1);
+  }
+  .hero__grid {
+    gap: var(--s-12);
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-9);
+  }
+  .hero {
+    padding-block: var(--s-9) var(--s-10);
+  }
+  .hero__lead {
+    max-width: 54ch;
+  }
+}
+
+@media (max-width: 479px) {
+  /* Tighten the display size so the second line sets as one line rather than
+     breaking after a single word. */
+  .hero__h1 {
+    font-size: 2.05rem;
+    letter-spacing: -0.032em;
+  }
+}
+
+@media (max-width: 599px) {
+  .hero__cta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-2);
+  }
+  .hero__facts {
+    flex-direction: column;
+    gap: 7px;
+  }
+  .hero__facts li:not(:last-child)::after {
+    display: none;
+  }
+}

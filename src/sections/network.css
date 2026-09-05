@@ -1,0 +1,214 @@
+.net__facts {
+  display: grid;
+  gap: var(--s-5);
+}
+.net__facts dd {
+  margin-top: 5px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-2);
+  line-height: 1.55;
+}
+
+/* --- Region table ------------------------------------------------------ */
+.rtable-wrap {
+  overflow-x: auto;
+}
+
+.rtable {
+  width: 100%;
+  min-width: 620px;
+}
+
+.rtable thead th {
+  text-align: left;
+  padding: 0 var(--s-5) 10px 0;
+  border-bottom: 1px solid var(--c-line-2);
+  white-space: nowrap;
+  font-weight: 500;
+}
+.rtable thead th:last-child {
+  padding-right: 0;
+  text-align: right;
+}
+
+.rrow {
+  cursor: pointer;
+  transition: background-color var(--t-fast) var(--e-out);
+  position: relative;
+}
+.rrow td {
+  padding: 12px var(--s-5) 12px 0;
+  border-bottom: 1px solid var(--c-line);
+  font-size: var(--fs-sm);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.rrow:hover {
+  background: rgba(255, 255, 255, 0.022);
+}
+.rrow.is-sel {
+  background: var(--c-accent-wash);
+}
+.rrow.is-sel td {
+  border-bottom-color: var(--c-accent-line);
+}
+.rrow.is-sel .rrow__code {
+  color: var(--c-accent);
+}
+
+.rrow__code {
+  font-size: var(--fs-mono);
+  color: var(--c-text);
+  font-weight: 500;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.rrow__tier {
+  font-family: var(--ff-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-4);
+}
+.rrow__city {
+  color: var(--c-text);
+}
+.rrow__cc {
+  margin-left: 8px;
+  font-size: var(--fs-mono-sm);
+}
+.rrow__fac,
+.rrow__up {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-3);
+}
+
+.rrow__lat {
+  min-width: 170px;
+}
+.rrow__bar {
+  display: inline-block;
+  width: 96px;
+  height: 3px;
+  background: var(--c-line);
+  vertical-align: middle;
+  margin-right: 11px;
+}
+.rrow__barfill {
+  display: block;
+  height: 100%;
+  background: var(--c-line-3);
+  transition: background-color var(--t-fast) var(--e-out);
+}
+.rrow.is-sel .rrow__barfill,
+.rrow:hover .rrow__barfill {
+  background: var(--c-accent);
+}
+.rrow__ms {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.rrow__cap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.rrow__pct {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.rrow__state {
+  text-align: right;
+  padding-right: 0 !important;
+}
+.rrow__ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-ok);
+}
+
+/* --- Detail band ------------------------------------------------------- */
+.rdetail {
+  margin-top: var(--s-8);
+  border: 1px solid var(--c-line);
+  border-left: 2px solid var(--c-accent);
+  background: var(--c-bg-2);
+  padding: var(--s-6);
+}
+.rdetail__id {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-bottom: var(--s-5);
+  border-bottom: 1px solid var(--c-line);
+}
+.rdetail__code {
+  font-size: var(--fs-mono);
+  color: var(--c-accent);
+  font-weight: 500;
+}
+.rdetail__place {
+  font-size: var(--fs-h4);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+.rdetail__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--s-6);
+  padding-top: var(--s-5);
+}
+.rdetail__grid dd {
+  margin-top: 6px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-2);
+  line-height: 1.45;
+}
+.rdetail__note {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--c-line);
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-4);
+  line-height: 1.6;
+  max-width: 84ch;
+}
+
+@media (max-width: 1023px) {
+  .rtable__hide-md {
+    display: none;
+  }
+  .rtable {
+    min-width: 480px;
+  }
+  .rdetail__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-5);
+  }
+}
+
+@media (max-width: 599px) {
+  .rtable__hide-sm {
+    display: none;
+  }
+  .rtable {
+    min-width: 380px;
+  }
+  .rrow__bar {
+    width: 52px;
+    margin-right: 8px;
+  }
+  .rrow__lat {
+    min-width: 0;
+  }
+  .rdetail {
+    padding: var(--s-5);
+  }
+}

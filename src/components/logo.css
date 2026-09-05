@@ -1,0 +1,25 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: none;
+}
+
+.logo__mark {
+  color: var(--c-accent);
+  display: grid;
+  place-items: center;
+  transition: transform var(--t-slow) var(--e-out);
+}
+
+.logo:hover .logo__mark {
+  transform: rotate(60deg);
+}
+
+.logo__word {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  font-stretch: 96%;
+  color: var(--c-text);
+}
