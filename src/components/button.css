@@ -1,0 +1,103 @@
+/* Buttons are rectangles with a 2px radius. Nothing here is a pill. */
+
+.btn {
+  --btn-pad-x: 18px;
+  --btn-h: 40px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: var(--btn-h);
+  padding-inline: var(--btn-pad-x);
+  border-radius: var(--r-1);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: -0.008em;
+  white-space: nowrap;
+  transition: background-color var(--t-fast) var(--e-out),
+    border-color var(--t-fast) var(--e-out), color var(--t-fast) var(--e-out),
+    box-shadow var(--t-fast) var(--e-out);
+}
+
+.btn--sm {
+  --btn-h: 32px;
+  --btn-pad-x: 13px;
+  font-size: var(--fs-xs);
+}
+.btn--lg {
+  --btn-h: 48px;
+  --btn-pad-x: 24px;
+  font-size: var(--fs-body);
+}
+.btn--full {
+  width: 100%;
+}
+
+/* --- primary: the only place a solid accent fill appears --------------- */
+.btn--primary {
+  background: var(--c-accent);
+  color: var(--c-on-accent);
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+.btn--primary:hover {
+  background: var(--c-accent-hi);
+}
+.btn--primary:active {
+  background: #dd9433;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* --- outline: hairline box -------------------------------------------- */
+.btn--outline {
+  border: 1px solid var(--c-line-2);
+  color: var(--c-text);
+  background: transparent;
+}
+.btn--outline:hover {
+  border-color: var(--c-line-3);
+  background: rgba(255, 255, 255, 0.028);
+}
+.btn--outline:active {
+  background: rgba(255, 255, 255, 0.012);
+}
+
+/* --- quiet: filled neutral -------------------------------------------- */
+.btn--quiet {
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-line);
+  color: var(--c-text);
+}
+.btn--quiet:hover {
+  background: var(--c-surface-3);
+  border-color: var(--c-line-2);
+}
+
+/* --- text: inline action with a moving arrow -------------------------- */
+.btn--text {
+  height: auto;
+  padding: 0;
+  color: var(--c-text);
+  gap: 7px;
+}
+.btn--text .btn__label {
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color var(--t-fast) var(--e-out);
+}
+.btn--text:hover {
+  color: var(--c-accent);
+}
+.btn--text:hover .btn__label {
+  border-bottom-color: var(--c-accent-line);
+}
+
+.btn__arrow {
+  display: grid;
+  place-items: center;
+  transition: transform var(--t-med) var(--e-out);
+}
+.btn:hover .btn__arrow {
+  transform: translateX(3px);
+}

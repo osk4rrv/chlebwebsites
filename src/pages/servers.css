@@ -1,0 +1,96 @@
+/* --- Hardware rows ------------------------------------------------------ */
+.hw__row {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: var(--s-9);
+  padding-block: var(--s-7);
+  border-top: 1px solid var(--c-line);
+}
+.hw__row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.hw__row:last-child {
+  padding-bottom: 0;
+}
+.hw__cpu {
+  margin-top: 9px;
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.022em;
+}
+.hw__detail {
+  margin-top: 7px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-3);
+  line-height: 1.5;
+}
+.hw__specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--s-9);
+}
+.hw__specs > div {
+  padding: 11px 0;
+  border-top: 1px solid var(--c-line);
+}
+.hw__specs > div:nth-child(-n + 2) {
+  border-top: none;
+  padding-top: 0;
+}
+.hw__specs dd {
+  margin-top: 6px;
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-2);
+  line-height: 1.5;
+}
+
+@media (max-width: 1023px) {
+  .hw__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+}
+@media (max-width: 599px) {
+  .hw__specs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hw__specs > div:nth-child(2) {
+    border-top: 1px solid var(--c-line);
+    padding-top: 11px;
+  }
+}
+
+/* --- Connectivity ------------------------------------------------------- */
+.conn {
+  display: grid;
+  grid-template-columns: 200px 200px minmax(0, 1fr);
+  gap: var(--s-9);
+}
+.conn__title {
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--c-line-2);
+}
+.conn__list li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--c-line);
+  font-size: var(--fs-mono-sm);
+  color: var(--c-text-2);
+}
+.conn__body {
+  margin-top: var(--s-5);
+  font-size: var(--fs-sm);
+  color: var(--c-text-2);
+  line-height: var(--lh-loose);
+  max-width: 62ch;
+}
+
+@media (max-width: 1023px) {
+  .conn {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-7);
+  }
+  .conn__col--wide {
+    grid-column: 1 / -1;
+  }
+}

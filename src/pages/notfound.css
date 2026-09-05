@@ -1,0 +1,58 @@
+.nf {
+  padding-block: clamp(56px, 8vw, 120px) var(--s-13);
+}
+.nf__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: var(--s-10);
+  align-items: start;
+}
+.nf__code {
+  font-size: var(--fs-mono-sm);
+  color: var(--c-accent);
+  letter-spacing: 0.04em;
+}
+.nf__title {
+  margin-top: var(--s-5);
+  max-width: 22ch;
+}
+.nf__sub {
+  display: block;
+  color: var(--c-text-3);
+}
+.nf__body {
+  margin-top: var(--s-5);
+  font-size: var(--fs-sm);
+  color: var(--c-text-2);
+  line-height: var(--lh-loose);
+  max-width: 52ch;
+}
+.nf__cta {
+  margin-top: var(--s-7);
+  display: flex;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+.nf__links ul {
+  margin-top: var(--s-4);
+}
+.nf__links li {
+  border-top: 1px solid var(--c-line);
+}
+.nf__links a {
+  display: block;
+  padding: 11px 0;
+  font-size: var(--fs-sm);
+  color: var(--c-text-2);
+  transition: color var(--t-fast) var(--e-out);
+}
+.nf__links a:hover {
+  color: var(--c-accent);
+}
+
+@media (max-width: 767px) {
+  .nf__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-8);
+  }
+}
