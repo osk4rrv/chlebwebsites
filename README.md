@@ -53,10 +53,15 @@ npm run dev          # http://localhost:5173/chlebwebsites/
 npm run build        # type-check, build, emit dist/ + 404.html
 npm run lint
 npm run shots        # layout review screenshots at 3 viewports
+npm run verify       # screenshot the deployed site and report console errors
 ```
 
 `npm run shots` serves `dist/` and captures viewport slices of each route to
-`.kiro/artifacts/screenshots/`. Pass routes and `--vp=mobile` to narrow it.
+`.kiro/artifacts/screenshots/`. Pass routes and `--vp=mobile` to narrow it:
+
+```bash
+npm run shots -- /pricing /docs --vp=mobile --max=4
+```
 
 ## Deployment
 
@@ -75,8 +80,10 @@ BASE_PATH=/ npm run build
 
 and add a `CNAME` file containing the domain to `public/`.
 
-`postbuild` copies `index.html` to `404.html` so client-side routes survive a
-direct hit on a deep link.
+`postbuild` writes a real `index.html` for every route (`tools/routes.mjs`), so
+deep links answer `200` rather than falling through to `404.html`. Doc routes are
+read from `src/data/docs.ts`, so adding an article needs no change there.
+`404.html` is still emitted, and genuinely unknown paths get the styled 404 page.
 
 ## Notes
 
